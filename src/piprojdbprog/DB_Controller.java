@@ -1,0 +1,296 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package piprojdbprog;
+
+import java.util.*;
+import java.sql.*;
+
+/**
+ *
+ * @author Brendan
+ */
+public class DB_Controller {
+
+    /**
+     * the driver for the SQL linker in this case: MYSQL
+     */
+    private static final String jdbcDriver = "com.mysql.jdbc.Driver";
+    /**
+     * The connection path to the database to be used
+     */
+    private static final String connectionName
+            = "jdbc:mysql://localhost/weather";
+    /**
+     * The [MY]SQL user to log in as
+     */
+    private static final String connectionUser = "root";
+    /**
+     * The password for the abovementioned user in this case an empty
+     */
+    private static final String connectionPassword = "";
+
+    /**
+     * this sets up the database to be used, it MUST be called before any method
+     * of this class can be safely used
+     *
+     * @param indicator 0 if you want to remove old data 1 if you want to not do
+     * that if an invalid value is given it will default to 0
+     * @throws ClassNotFoundException
+     */
+    public void createDB(int indicator) throws ClassNotFoundException {
+        if (indicator < 0 || indicator > 1) {
+            indicator = 0;
+        }
+        try {
+            Class.forName(jdbcDriver);
+            Connection con = DriverManager.getConnection(connectionName, connectionUser, connectionPassword);
+            //System.out.println("2");
+            Statement st = con.createStatement();
+            if (indicator == 0) {
+                st.execute("drop table if exists weatherData");
+                st.execute("create table weatherData(Date varchar(50),Time varchar(50),  Temp float(2), Humid float(2), Press float(2), Dew_point float(2)) ");
+                System.out.println("Database 'weatherdata' created");
+                st.execute("drop table if exists dailyavgs");
+                st.execute("create table dailyavgs(Date varchar(50), Temp float(2), Humid float(2), Press float(2) , Dew_point float(2)) ");
+            }
+            System.out.println("Database: 'dailyavgs' created ");
+
+        } catch (Exception ex) {
+            System.err.println("AN ERROR HAS OCCURED");
+        }
+    }
+
+    /**
+     *
+     * @return the number of lines in the db
+     * @throws ClassNotFoundException
+     * @throws SQLException
+     */
+    public int getDBSize() throws ClassNotFoundException, SQLException {
+        try {
+            Class.forName(jdbcDriver);
+            String qur = "SELECT * from weatherdata";
+
+            Connection con = DriverManager.getConnection(connectionName, connectionUser, connectionPassword);
+            Statement st = con.createStatement();
+            ResultSet ra = st.executeQuery(qur);
+            int cnt = 0;
+            while (ra.next()) {
+                cnt++;
+
+            }
+            return cnt;
+        } catch (Exception e) {
+            System.out.println();
+            return -1;
+
+        }
+
+    }
+
+    public void AvgDBIns(String date, float hum, float tem, float press, float dew)throws ClassNotFoundException, SQLException {
+        try {
+
+            Class.forName(jdbcDriver);
+            Connection con = DriverManager.getConnection(connectionName, connectionUser, connectionPassword);
+            //System.out.println("2");
+            Statement st = con.createStatement();
+            //System.out.println(time);
+
+            st.execute("Insert into dailyavgs values( " + "'" + date + "'" + "," + tem + "," + hum + "," + press + "," + dew + ")");
+            //System.out.println("DATA inserted");
+            
+
+        } catch (Exception ex) {
+            System.err.println("AN ERROR HAS OCCURED 5");
+        }
+
+    }
+
+    /**
+     * inserts one line into the database
+     *
+     * @param data the output from
+     * {@link piprojdbprog.FileParser#dataParse(int index)}
+     */
+    public void DBIns(float[] data, String time, String date) {
+        try {
+
+            Class.forName(jdbcDriver);
+            Connection con = DriverManager.getConnection(connectionName, connectionUser, connectionPassword);
+            //System.out.println("2");
+            Statement st = con.createStatement();
+            //System.out.println(time);
+
+            st.execute("Insert into weatherData values( " + "'" + date + "'," + "'" + time + " ', " + data[1] + " , " + data[0] + " , " + data[2] + " , " + data[3] + " )");
+            //System.out.println("DATA inserted");
+
+        } catch (Exception ex) {
+            System.err.println("AN ERROR HAS OCCURED 5");
+        }
+
+    }
+
+    public float[] GetDailyData(String val, String date) throws ClassNotFoundException, SQLException {
+        try {
+            Class.forName(jdbcDriver);
+            //System.out.println(val);
+            String qur = "SELECT " + val + " from weatherdata where date = " + "'" + date + "'";
+            //System.out.println(qur);
+            Connection con = DriverManager.getConnection(connectionName, connectionUser, connectionPassword);
+            Statement st = con.createStatement();
+            ResultSet ra = st.executeQuery(qur);
+            LinkedList<Float> li = new LinkedList<>();
+            while (ra.next()) {
+                li.add(ra.getFloat(1));
+            }
+            //System.out.println(li.size());
+            float[] ret = new float[li.size()];
+            for (int i = 0; i < li.size(); i++) {
+                ret[i] = li.get(i);
+            }
+            return ret;
+            // System.out.println(ra.getFloat(1));
+        } catch (Exception e) {
+            System.err.println("I AM ERROR");
+            return null;
+        }
+
+    }
+
+    public String[] DistDays() throws ClassNotFoundException, SQLException {
+        try {
+            Class.forName(jdbcDriver);
+            String qur = "SELECT distinct date from weatherdata ";
+
+            Connection con = DriverManager.getConnection(connectionName, connectionUser, connectionPassword);
+            Statement st = con.createStatement();
+            ResultSet ra = st.executeQuery(qur);
+            LinkedList<String> str = new LinkedList<>();
+            while (ra.next()) {
+                // System.out.println(ra.getString(1));
+                str.add(ra.getString(1));
+            }
+            String[] arr = new String[str.size()];
+            for (int i = 0; i < str.size(); i++) {
+                arr[i] = str.get(i);
+            }
+
+            return arr;
+        } catch (Exception e) {
+            System.err.println("ERROR HAS OCCURED IN DB_Controller#DistDays");
+            return null;
+        }
+    }
+
+    /**
+     * THIS METHOD IS UNFINISHED!!!!!
+     *
+     * @param querry the field in the DB to return a list of
+     * @return an array of floats of the specified field
+     * @throws ClassNotFoundException
+     * @throws SQLException
+     */
+    public String[] dbSearch(String querry) throws ClassNotFoundException, SQLException {
+        try {
+            if ("Temp".equals(querry) || "Press".equals(querry) || "Dew_point".equals(querry) || "Humid".equals(querry) || "Time".equals(querry) || "Date".equals(querry)) {
+                // Setup and initialization
+                Class.forName(jdbcDriver);
+                String qur = "SELECT count(*) from weatherdata";
+
+                Connection con = DriverManager.getConnection(connectionName, connectionUser, connectionPassword);
+                Statement st = con.createStatement();
+                ResultSet ra = st.executeQuery(qur);
+                ra.next();
+                //  System.out.println("query worked");
+                String ct = ra.getString(1);
+                //System.out.println(ct);
+                int numrows = Integer.parseInt(ct);
+
+                // return list of temps-----------------------------------------
+                if ("Temp".equals(querry)) {
+                    String[] ret = new String[numrows];
+                    st = con.createStatement();
+                    qur = "Select Temp from weatherdata";
+                    ra = st.executeQuery(qur);
+                    ra.next();
+                    for (int i = 0; i < numrows; i++) {
+                        Float tem = ra.getFloat(1);
+                        ret[i] = tem.toString();
+                        // System.out.println(i);
+                        // System.out.println(ra.getFloat(1));
+                        ra.next();
+
+                    }
+                    return ret;
+                }
+
+                // return list of humidity readings-----------------------------
+                if ("Humid".equals(querry)) {
+                    String[] ret = new String[numrows];
+                    st = con.createStatement();
+                    qur = "Select Humid from weatherdata";
+                    ra = st.executeQuery(qur);
+                    ra.next();
+                    for (int i = 0; i < numrows; i++) {
+                        Float tem = ra.getFloat(1);
+                        ret[i] = tem.toString();
+                        //System.out.println(i);
+                        // System.out.println(ra.getFloat(1));
+                        ra.next();
+
+                    }
+                    return ret;
+                }
+
+                // return list of pressure readings-----------------------------
+                if ("Press".equals(querry)) {
+                    String[] ret = new String[numrows];
+                    st = con.createStatement();
+                    qur = "Select Press from weatherdata";
+                    ra = st.executeQuery(qur);
+                    ra.next();
+                    for (int i = 0; i < numrows; i++) {
+                        Float tem = ra.getFloat(1);
+                        ret[i] = tem.toString();
+                        // System.out.println(i);
+                        // System.out.println(ra.getFloat(1));
+                        ra.next();
+
+                    }
+                    return ret;
+                }
+
+                //-----------------------------
+                if ("Dew_point".equals(querry)) {
+                    String[] ret = new String[numrows];
+                    st = con.createStatement();
+                    qur = "Select Dew_point from weatherdata";
+                    ra = st.executeQuery(qur);
+                    ra.next();
+                    for (int i = 0; i < numrows; i++) {
+                        Float tem = ra.getFloat(1);
+                        ret[i] = tem.toString();
+                        // System.out.println(i);
+                        // System.out.println(ra.getFloat(1));
+                        ra.next();
+
+                    }
+                    return ret;
+                }
+                // System.out.println(sna);
+            } else {
+                System.err.println("Invalid value provided");
+
+            }
+        } catch (Exception e) {
+            System.out.println("ERROR!");
+        }
+        return null;
+
+    }
+
+}
