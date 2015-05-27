@@ -164,7 +164,6 @@ public class Stats {
         }
         sum /= readings.length;
 
-
         return sum;
     }
 
@@ -176,7 +175,6 @@ public class Stats {
 
         }
         sum /= readings.length;
-
 
         return sum;
     }
@@ -214,6 +212,7 @@ public class Stats {
         float max = maximum(data);
         //System.out.println(max);
         result[0] = min;
+        result[1] = max;
         return result;
     }
 
@@ -230,6 +229,7 @@ public class Stats {
         float min = minimum(data);
         float max = maximum(data);
         result[0] = min;
+        result[1] = max;
         return result;
     }
 
@@ -246,6 +246,7 @@ public class Stats {
         float min = minimum(data);
         float max = maximum(data);
         result[0] = min;
+        result[1] = max;
         return result;
     }
 
@@ -262,6 +263,7 @@ public class Stats {
         float min = minimum(data);
         float max = maximum(data);
         result[0] = min;
+        result[1] = max;
         return result;
     }
     //-----------------------daily high/low-------------------------------------
@@ -309,13 +311,45 @@ public class Stats {
 
     public void OverallAvgs(DB_Controller db) throws ClassNotFoundException, SQLException {
         try {
+            System.out.println();
+            System.out.println("=======Overall Averages=========");
             System.out.println("Average Pressure (overall): " + PressureOverallAvg(db));
             System.out.println("Average Temp (overall): " + TempOverallAvg(db));
             System.out.println("Average Hum (overall): " + HumOverallAvg(db));
             System.out.println("Average Dew Point (overall): " + DewOverallAvg(db));
+            System.out.println();
         } catch (Exception e) {
             System.err.println("An Error has occured in Stats#OverallAvgs");
         }
+    }
+
+    public void OverallHiLow(DB_Controller db) throws ClassNotFoundException, SQLException {
+        try {
+            System.out.println();
+            System.out.println("=====Overall High/Low Values===========");
+            float[] press = OverallHighLowPressure(db);
+            System.out.println("------Pressure--------");
+            System.out.println("Overall High Pressure: " + press[1]);
+            System.out.println("Overall Low Pressure: " + press[0]);
+            float[] temp = OverallHighLowTemp(db);
+            System.out.println("------Temperature--------");
+            System.out.println("Overall High Temp: " + temp[1]);
+            System.out.println("Overall Low Temp: " + temp[0]);
+            float[] hum = OverallHighLowHumid(db);
+            System.out.println("------Humidity--------");
+            System.out.println("Overall High Humidity: " + hum[1]);
+            System.out.println("Overall Low Humidity: " + hum[0]);
+            float[] dew = OverallHighLowDew(db);
+            System.out.println("------Dew Point--------");
+            System.out.println("Overall High Dew Point: " + dew[1]);
+            System.out.println("Overall Low Dew Point: " + dew[0]);
+            System.out.println();
+
+        } catch (Exception e) {
+            System.err.println("An error has occurred in Stats#OverallHiLow");
+
+        }
+
     }
 
     private float minimum(float[] values) {

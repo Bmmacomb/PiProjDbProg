@@ -36,6 +36,7 @@ public class PiProjDbProg {
         stat.DailyAvgFiller(db);
         stat.OverallAvgs(db);
         stat.OverallHighLowTemp(db);
+        stat.OverallHiLow(db);
         // TODO code application logic here
         
 
