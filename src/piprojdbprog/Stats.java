@@ -127,7 +127,6 @@ public class Stats {
             for (int i = 0; i < dewArr.length; i++) {
 
                 dArr[i] = Float.parseFloat(dewArr[i]);
-                //System.out.println(i +" " + fArr[i]);
 
             }
             for (int i = 0; i < dArr.length; i++) {
@@ -152,7 +151,6 @@ public class Stats {
 
         }
         sum /= readings.length;
-        //System.out.println(sum);
 
         return sum;
     }
@@ -165,7 +163,7 @@ public class Stats {
 
         }
         sum /= readings.length;
-        //System.out.println(sum);
+
 
         return sum;
     }
@@ -178,7 +176,7 @@ public class Stats {
 
         }
         sum /= readings.length;
-        //System.out.println(sum);
+
 
         return sum;
     }
@@ -191,7 +189,6 @@ public class Stats {
 
         }
         sum /= readings.length;
-        //System.out.println(sum);
 
         return sum;
     }
@@ -232,7 +229,6 @@ public class Stats {
         }
         float min = minimum(data);
         float max = maximum(data);
-        //System.out.println(min);
         result[0] = min;
         return result;
     }
@@ -249,7 +245,6 @@ public class Stats {
         }
         float min = minimum(data);
         float max = maximum(data);
-        //System.out.println(max);
         result[0] = min;
         return result;
     }
@@ -266,7 +261,6 @@ public class Stats {
         }
         float min = minimum(data);
         float max = maximum(data);
-        //System.out.println(max);
         result[0] = min;
         return result;
     }
