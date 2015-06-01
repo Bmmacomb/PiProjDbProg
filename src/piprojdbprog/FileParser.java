@@ -10,7 +10,9 @@ import java.io.*;
 
 /**
  *
- * @author Brendan
+ * @author Brendan essentially finished as of 5/26/15 this class parses the
+ * datafile produced by the raspberry pi weather-station into a form that is
+ * easier to insert into the sql database
  */
 public class FileParser {
 

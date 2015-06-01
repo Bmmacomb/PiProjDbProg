@@ -9,6 +9,8 @@ import java.util.*;
 import java.sql.*;
 
 /**
+ * this class does all work that involves direct interaction with the various
+ * tables in the database: weatherData, DailyAvgs, and DailyHiLo
  *
  * @author Brendan
  */
@@ -52,15 +54,14 @@ public class DB_Controller {
             if (indicator == 0) {
                 st.execute("drop table if exists weatherData");
                 st.execute("create table weatherData(Date varchar(50),Time varchar(50),  Temp float(2), Humid float(2), Press float(2), Dew_point float(2)) ");
-                System.out.println("Database 'weatherdata' created");
+                System.out.println("Database 'weatherdata' created.");
                 st.execute("drop table if exists dailyavgs");
                 st.execute("create table dailyavgs(Date varchar(50), Temp float(2), Humid float(2), Press float(2) , Dew_point float(2)) ");
+                System.out.println("Database: 'dailyavgs' created. ");
                 st.execute("drop table if exists dailyHiLow");
                 st.execute("create table dailyHiLow(Date varchar(50), LoTemp float(2), HiTemp float(2), LoHum float(2), HiHum float(2), LoPress float(2), HiPress float(2), LoDew float(2), HiDew float(2))");
-
+                System.out.println("Database: 'dailyHiLow' created.");
             }
-
-            System.out.println("Database: 'dailyavgs' created ");
 
         } catch (Exception ex) {
             System.err.println("AN ERROR HAS OCCURED");
@@ -119,8 +120,8 @@ public class DB_Controller {
             Connection con = DriverManager.getConnection(connectionName, connectionUser, connectionPassword);
             //System.out.println("2");
             Statement st = con.createStatement();
-            System.out.println(Temp[0] + " " + Temp[1]);
-            st.execute("insert into dailyHiLow values( " +"'" + date + "'" + ","  + Temp[0] + "," + Temp[1] + ","  + Hum[0] + "," + Hum[1] + ","  + press[0] + "," + press[1] + ","  + dew[0] + "," + dew[1] + ")");
+            //System.out.println(Temp[0] + " " + Temp[1]);
+            st.execute("insert into dailyHiLow values( " + "'" + date + "'" + "," + Temp[0] + "," + Temp[1] + "," + Hum[0] + "," + Hum[1] + "," + press[0] + "," + press[1] + "," + dew[0] + "," + dew[1] + ")");
 
         } catch (Exception e) {
             System.err.println("ERROR IN DB_Controller#HiLoIns");

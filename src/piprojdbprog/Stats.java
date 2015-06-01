@@ -270,54 +270,54 @@ public class Stats {
     //-----------------------daily high/low-------------------------------------
     //===========Pressure===========
     public float[] DailyHiLoPressure(float[] readings) {
-     
-       float min = minimum(readings);
-       float max = maximum(readings);
-        if (min != Float.MAX_VALUE && max != Float.MIN_VALUE) {
-            float[] ret = {min,max};
-            return ret;
-        }
-        
-        
-    return null;
-    }
-    //======Temp===================
-     public float[] DailyHiLoTemp(float[] readings) {
-     
-       float min = minimum(readings);
-       float max = maximum(readings);
-        if (min != Float.MAX_VALUE && max != Float.MIN_VALUE) {
-            float[] ret = {min,max};
-            return ret;
-        }
-        
-        
-    return null;
-    }
-    //=========humid================
-      public float[] DailyHiLoHum(float[] readings) {
-     
-       float min = minimum(readings);
-       float max = maximum(readings);
-        if (min != Float.MAX_VALUE && max != Float.MIN_VALUE) {
-            float[] ret = {min,max};
-            return ret;
-        }
-        
-        
-    return null;
-    }
-    //=========Dew pt===============
-           public float[] DailyHiLoDew(float[] readings) {
 
-       float min = minimum(readings);
-       float max = maximum(readings);
+        float min = minimum(readings);
+        float max = maximum(readings);
         if (min != Float.MAX_VALUE && max != Float.MIN_VALUE) {
-            float[] ret = {min,max};
+            float[] ret = {min, max};
             return ret;
         }
-        
-    return null;
+
+        return null;
+    }
+
+    //======Temp===================
+    public float[] DailyHiLoTemp(float[] readings) {
+
+        float min = minimum(readings);
+        float max = maximum(readings);
+        if (min != Float.MAX_VALUE && max != Float.MIN_VALUE) {
+            float[] ret = {min, max};
+            return ret;
+        }
+
+        return null;
+    }
+
+    //=========humid================
+    public float[] DailyHiLoHum(float[] readings) {
+
+        float min = minimum(readings);
+        float max = maximum(readings);
+        if (min != Float.MAX_VALUE && max != Float.MIN_VALUE) {
+            float[] ret = {min, max};
+            return ret;
+        }
+
+        return null;
+    }
+
+    //=========Dew pt===============
+    public float[] DailyHiLoDew(float[] readings) {
+
+        float min = minimum(readings);
+        float max = maximum(readings);
+        if (min != Float.MAX_VALUE && max != Float.MIN_VALUE) {
+            float[] ret = {min, max};
+            return ret;
+        }
+
+        return null;
     }
 
     //-----------------------monthly high/low-----------------------------------
@@ -340,8 +340,7 @@ public class Stats {
                 float[] H = DailyHiLoHum(dailyH);
                 float[] D = DailyHiLoDew(dailyD);
                 db.HiLoIns(days[i], H, T, P, D);
-                
-                
+
                 //System.out.println(D[0] + " " + D[1]);
             }
 
