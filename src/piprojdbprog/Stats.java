@@ -266,11 +266,59 @@ public class Stats {
         result[1] = max;
         return result;
     }
+
     //-----------------------daily high/low-------------------------------------
     //===========Pressure===========
+    public float[] DailyHiLoPressure(float[] readings) {
+     
+       float min = minimum(readings);
+       float max = maximum(readings);
+        if (min != Float.MAX_VALUE && max != Float.MIN_VALUE) {
+            float[] ret = {min,max};
+            return ret;
+        }
+        
+        
+    return null;
+    }
     //======Temp===================
+     public float[] DailyHiLoTemp(float[] readings) {
+     
+       float min = minimum(readings);
+       float max = maximum(readings);
+        if (min != Float.MAX_VALUE && max != Float.MIN_VALUE) {
+            float[] ret = {min,max};
+            return ret;
+        }
+        
+        
+    return null;
+    }
     //=========humid================
+      public float[] DailyHiLoHum(float[] readings) {
+     
+       float min = minimum(readings);
+       float max = maximum(readings);
+        if (min != Float.MAX_VALUE && max != Float.MIN_VALUE) {
+            float[] ret = {min,max};
+            return ret;
+        }
+        
+        
+    return null;
+    }
     //=========Dew pt===============
+           public float[] DailyHiLoDew(float[] readings) {
+
+       float min = minimum(readings);
+       float max = maximum(readings);
+        if (min != Float.MAX_VALUE && max != Float.MIN_VALUE) {
+            float[] ret = {min,max};
+            return ret;
+        }
+        
+    return null;
+    }
 
     //-----------------------monthly high/low-----------------------------------
     // ====================these are stretch goals==============================
@@ -279,6 +327,29 @@ public class Stats {
     //=========humid================
     //=========Dew pt===============
     //-----------------------helper method(s)-----------------------------------
+    public void DailyHiLoFiller(DB_Controller db) throws SQLException, ClassNotFoundException {
+        try {
+            String[] days = db.DistDays();
+            for (int i = 0; i < days.length; i++) {
+                float[] dailyP = db.GetDailyData("press", days[i]);
+                float[] dailyT = db.GetDailyData("temp", days[i]);
+                float[] dailyH = db.GetDailyData("humid", days[i]);
+                float[] dailyD = db.GetDailyData("dew_point", days[i]);
+                float[] P = DailyHiLoPressure(dailyP);
+                float[] T = DailyHiLoTemp(dailyT);
+                float[] H = DailyHiLoHum(dailyH);
+                float[] D = DailyHiLoDew(dailyD);
+                db.HiLoIns(days[i], H, T, P, D);
+                
+                
+                //System.out.println(D[0] + " " + D[1]);
+            }
+
+        } catch (Exception e) {
+
+        }
+    }
+
     /**
      * This sets up the data in the daily averages database
      *

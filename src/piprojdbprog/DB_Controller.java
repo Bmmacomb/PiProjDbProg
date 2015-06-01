@@ -55,7 +55,11 @@ public class DB_Controller {
                 System.out.println("Database 'weatherdata' created");
                 st.execute("drop table if exists dailyavgs");
                 st.execute("create table dailyavgs(Date varchar(50), Temp float(2), Humid float(2), Press float(2) , Dew_point float(2)) ");
+                st.execute("drop table if exists dailyHiLow");
+                st.execute("create table dailyHiLow(Date varchar(50), LoTemp float(2), HiTemp float(2), LoHum float(2), HiHum float(2), LoPress float(2), HiPress float(2), LoDew float(2), HiDew float(2))");
+
             }
+
             System.out.println("Database: 'dailyavgs' created ");
 
         } catch (Exception ex) {
@@ -91,7 +95,7 @@ public class DB_Controller {
 
     }
 
-    public void AvgDBIns(String date, float hum, float tem, float press, float dew)throws ClassNotFoundException, SQLException {
+    public void AvgDBIns(String date, float hum, float tem, float press, float dew) throws ClassNotFoundException, SQLException {
         try {
 
             Class.forName(jdbcDriver);
@@ -102,12 +106,25 @@ public class DB_Controller {
 
             st.execute("Insert into dailyavgs values( " + "'" + date + "'" + "," + tem + "," + hum + "," + press + "," + dew + ")");
             //System.out.println("DATA inserted");
-            
 
         } catch (Exception ex) {
             System.err.println("AN ERROR HAS OCCURED 5");
         }
 
+    }
+
+    public void HiLoIns(String date, float[] Hum, float[] Temp, float[] press, float[] dew) throws ClassNotFoundException, SQLException {
+        try {
+            Class.forName(jdbcDriver);
+            Connection con = DriverManager.getConnection(connectionName, connectionUser, connectionPassword);
+            //System.out.println("2");
+            Statement st = con.createStatement();
+            System.out.println(Temp[0] + " " + Temp[1]);
+            st.execute("insert into dailyHiLow values( " +"'" + date + "'" + ","  + Temp[0] + "," + Temp[1] + ","  + Hum[0] + "," + Hum[1] + ","  + press[0] + "," + press[1] + ","  + dew[0] + "," + dew[1] + ")");
+
+        } catch (Exception e) {
+            System.err.println("ERROR IN DB_Controller#HiLoIns");
+        }
     }
 
     /**
