@@ -21,15 +21,15 @@ public class PiProjDbProg {
      */
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
         DB_Controller db = new DB_Controller();
-        FileParser S = new FileParser();
+        FileParser file = new FileParser();
         Stats stat = new Stats();
         float[] dataline = new float[3];
-        S.popData();
+        file.popData();
         db.createDB(0);
         int insCnt = 0;
-        for (int i = 0; i < S.getSizeofFile(); i++) {
-            dataline = S.dataParse(i);
-            db.DBIns(dataline, S.time[i], S.date[i]);
+        for (int i = 0; i < file.getSizeofFile(); i++) {
+            dataline = file.dataParse(i);
+            db.DBIns(dataline, file.time[i], file.date[i]);
             insCnt = i + 1;
         }
         System.out.println("Status: weatherData created, it contains " + insCnt + " lines");

@@ -89,10 +89,10 @@ public class FileParser {
     }
 
     /**
-     *
+     * Preps data for insertion into the database
      * @param index the index of the line to parse
      * @return an array of floats for insertion into the database via
-     * {@link piprojdbprog.DB_Controller#DBIns(float[] data)}
+     * {@link piprojdbprog.DB_Controller#DBIns(float[] data, String time, String date)}
      */
     public float[] dataParse(int index) {
         float[] LData = new float[4];

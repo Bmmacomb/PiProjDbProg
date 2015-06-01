@@ -95,7 +95,17 @@ public class DB_Controller {
         }
 
     }
-
+    /**
+     * This method inserts data into the 'dailyAvgs' table in the database.
+     * NOTE: DO NOT HARDCODE ANY OF THEESE VALUES ALWAYS GET THEM FROM AVERAGING METHODS IN Stats
+     * @param date the date string: (YYYY-MM-DD)
+     * @param hum the average humidity value (%)
+     * @param tem the average temperature value (deg F)
+     * @param press the average barometric pressure value (Pa)
+     * @param dew the average dew point value
+     * @throws ClassNotFoundException
+     * @throws SQLException 
+     */
     public void AvgDBIns(String date, float hum, float tem, float press, float dew) throws ClassNotFoundException, SQLException {
         try {
 
@@ -113,7 +123,17 @@ public class DB_Controller {
         }
 
     }
-
+    /**
+     * inserts data into the 'dailyHiLow' table in the database.
+     * all array params are of this form X[0] = [daily] minimum value X[1] = [daily] Maximum value
+     * @param date The date on which the data was filed under
+     * @param Hum min/max humidity values (%)
+     * @param Temp min/max temperature values (F)
+     * @param press min/max Pressure values (Pa)
+     * @param dew min/max Dew Point values (F)
+     * @throws ClassNotFoundException
+     * @throws SQLException 
+     */
     public void HiLoIns(String date, float[] Hum, float[] Temp, float[] press, float[] dew) throws ClassNotFoundException, SQLException {
         try {
             Class.forName(jdbcDriver);
@@ -151,7 +171,14 @@ public class DB_Controller {
         }
 
     }
-
+    /**
+     * 
+     * @param val the type of data to return (Temp, Humid, dew_point, or press)
+     * @param date the date to retrieve data from
+     * @return All data of the specified type for the given day
+     * @throws ClassNotFoundException
+     * @throws SQLException 
+     */
     public float[] GetDailyData(String val, String date) throws ClassNotFoundException, SQLException {
         try {
             Class.forName(jdbcDriver);
@@ -178,7 +205,12 @@ public class DB_Controller {
         }
 
     }
-
+/**
+ * Used to return a list of distinct days from the 'weatherdata' database
+ * @return a list of distinct days; to be used in daily averages and daily hi/lo methods
+ * @throws ClassNotFoundException
+ * @throws SQLException 
+ */
     public String[] DistDays() throws ClassNotFoundException, SQLException {
         try {
             Class.forName(jdbcDriver);
@@ -205,7 +237,7 @@ public class DB_Controller {
     }
 
     /**
-     * THIS METHOD IS UNFINISHED!!!!!
+     * searches for all data of a given type (Temp,Press,Dew_point,Humid,Time,Date)
      *
      * @param querry the field in the DB to return a list of
      * @return an array of floats of the specified field
