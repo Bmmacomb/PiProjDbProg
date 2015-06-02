@@ -1,3 +1,6 @@
+Version 0.0.18
+
+
 The data file used with this project must be in the form below:
 (DATE: YYYY-MM-DD)*SPACE*(TIME: HH:MM:SS)*SPACE*(HUMIDITY: IN PERCENT)*SPACE*(TEMP: IN F)*SPACE*(PRESSURE: IN Pa)*SPACE*(ALTITUDE)*SPACE*(SEALEVEL PRESSURE: IN Pa)*SPACE*(DEW POINT IN F)
 
@@ -13,11 +16,11 @@ The data file used with this project must be in the form below:
 
 WHAT THE CLASES DO=========================================
 
-DB_Controller-------------------
+DB_Controller-------------------(~90% DONE)
 Intracts directly with the MYSQL Database: create, insert, make requests, etc...
 
 
-Stats---------------------------
+Stats---------------------------(~80% DONE)
 Preforms various calculations:
 	Overall High/Low: Temp/Humidity/Pressure/Dew Point
 	Daily High/Low:  Temp/Humidity/Pressure/Dew Point
@@ -25,12 +28,15 @@ Preforms various calculations:
 	daily average: Temp/Humidity/Pressure/Dew Point
 provides methods for bulk insertion into the 'DailAvgs' and 'DailyHiLow' database tables
 
-File Parser---------------------
+File Parser---------------------(COMPLETE)
 Parses the data in the datafile into a form that can be inserted into the 'weatherdata' table in the db
 
-PiProjDbProg--------------------
+PiProjDbProg--------------------(~60% DONE)
 firstly; that's short for "Pi Project Database Program"
 this is the main class that runs the project
+
+FileOutput----------------------(>1% DONE)
+This will create an output file of the databases in XML or plain text;
 
 
 NOTES ON THE DATABASE===================================

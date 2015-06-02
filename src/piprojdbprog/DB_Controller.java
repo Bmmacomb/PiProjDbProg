@@ -67,6 +67,37 @@ public class DB_Controller {
             System.err.println("An error ha occured in DB_Controller#CreateDB");
         }
     }
+    public String[] DB_Dump() throws ClassNotFoundException, SQLException{
+         try {
+            int size = getDBSize();
+            //System.out.println(size);
+            String[] out = new String[size];
+            Class.forName(jdbcDriver);
+            String qur = "SELECT * from weatherdata";
+
+            Connection con = DriverManager.getConnection(connectionName, connectionUser, connectionPassword);
+            Statement st = con.createStatement();
+            ResultSet ra = st.executeQuery(qur);
+            ra.next();
+            for (int i = 0 ; i < size; i++){
+                out[i] = "" + ra.getObject(1) + " " + ra.getObject(2) + "" + ra.getObject(3) + " " + ra.getObject(4) + " " + ra.getObject(5) + " " + ra.getObject(6);
+                //System.out.println(out[i]);
+                ra.next();
+            
+            }
+            return out;
+            
+            
+            
+            
+         }catch(Exception e){
+         
+         System.err.println("ERROR");
+         }
+    
+    
+    return null;
+    }
 
     /**
      *

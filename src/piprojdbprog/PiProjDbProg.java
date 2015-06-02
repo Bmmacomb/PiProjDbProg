@@ -20,9 +20,12 @@ public class PiProjDbProg {
      * @throws java.sql.SQLException
      */
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
+     // Initalize all classes   
         DB_Controller db = new DB_Controller();
         FileParser file = new FileParser();
         Stats stat = new Stats();
+        FileOutput OFile = new FileOutput(db, "outFile");
+     // Database creation   
         float[] dataline = new float[3];
         file.popData();
         db.createDB(0);
@@ -33,11 +36,14 @@ public class PiProjDbProg {
             insCnt = i + 1;
         }
         System.out.println("Status: WeatherData now contains " + insCnt + " entries");
+        // Statistics
         stat.DailyAvgFiller(db);
         stat.DailyHiLoFiller(db);
         stat.OverallAvgs(db);
         stat.OverallHighLowTemp(db);
         stat.OverallHiLow(db);
+        // create xml out-files UNFINISHED
+        OFile.XMLConverter(db);
 
         // TODO code application logic here
     }
