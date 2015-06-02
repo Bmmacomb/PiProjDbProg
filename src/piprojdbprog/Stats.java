@@ -106,7 +106,7 @@ public class Stats {
             return sum / (float) hArr.length;
 
         } catch (Exception e) {
-            System.err.println(" an error has occured in Stats#TempOverallAvg");
+            System.err.println(" an error has occured in Stats#HumOverallAvg");
             return 0;
         }
     }
@@ -137,13 +137,18 @@ public class Stats {
             return sum / (float) dArr.length;
 
         } catch (Exception e) {
-            System.err.println(" an error has occured in Stats#TempOverallAvg");
+            System.err.println(" an error has occured in Stats#DewOverallAvg");
             return 0;
         }
     }
 
     //-----------------------Daily Averages-------------------------------------
     //=============Pressure=========
+    /**
+     * averages Pressure values
+     * @param readings the values to average
+     * @return  the average pressure value
+     */
     public float dailyPresAvg(float[] readings) {
         float sum = 0;
         for (int i = 0; i < readings.length; i++) {
@@ -156,6 +161,11 @@ public class Stats {
     }
 
     //============Temp==============
+    /**
+     * Averages Temperature values
+     * @param readings the values to average
+     * @return the average temperature value
+     */
     public float dailyTempAvg(float[] readings) {
         float sum = 0;
         for (int i = 0; i < readings.length; i++) {
@@ -168,6 +178,11 @@ public class Stats {
     }
 
     //===========Humid==============
+    /**
+     * Averages Humidity values
+     * @param readings the values to average
+     * @return the average humidity value
+     */
     public float dailyHumAvg(float[] readings) {
         float sum = 0;
         for (int i = 0; i < readings.length; i++) {
@@ -180,6 +195,11 @@ public class Stats {
     }
 
     //===========Dew pt==============
+    /**
+     * averages dew point values
+     * @param readings the values to average
+     * @return the average dewpoint value
+     */
     public float dailyDewAvg(float[] readings) {
         float sum = 0;
         for (int i = 0; i < readings.length; i++) {
@@ -328,6 +348,7 @@ public class Stats {
     //=========Dew pt===============
     //-----------------------helper method(s)-----------------------------------
     public void DailyHiLoFiller(DB_Controller db) throws SQLException, ClassNotFoundException {
+        int ctr = 0;
         try {
             String[] days = db.DistDays();
             for (int i = 0; i < days.length; i++) {
@@ -340,9 +361,10 @@ public class Stats {
                 float[] H = DailyHiLoHum(dailyH);
                 float[] D = DailyHiLoDew(dailyD);
                 db.HiLoIns(days[i], H, T, P, D);
-
+                ctr = i + 1;
                 //System.out.println(D[0] + " " + D[1]);
             }
+            System.out.println("Status: DailyHiLow now contains: " + ctr + " entries");
 
         } catch (Exception e) {
 
@@ -358,6 +380,7 @@ public class Stats {
      */
     public void DailyAvgFiller(DB_Controller db) throws ClassNotFoundException, SQLException {
         try {
+            int ctr = 0;
             String[] days = db.DistDays();
 
             for (int i = 0; i < days.length; i++) {
@@ -371,14 +394,22 @@ public class Stats {
                 float H = dailyHumAvg(dailyH);
                 float D = dailyDewAvg(dailyD);
                 db.AvgDBIns(days[i], H, T, P, D);
+                ctr = i + 1;
 
             }
+            System.out.println("Status: DailyAvg now has " + ctr + " entries");
         } catch (Exception e) {
-            System.err.println("AN ERROR HAS OCCURED: ALL YOUR BASE ARE BELONG TO US!");
+            System.err.println("An error has occured in Stats#DailyAvgFiller");
         }
 
     }
 
+    /**
+     * Prints out the overall averages
+     * @param db Just hand in whatever DB_Controller() object the calling class
+     * @throws ClassNotFoundException
+     * @throws SQLException
+     */
     public void OverallAvgs(DB_Controller db) throws ClassNotFoundException, SQLException {
         try {
             System.out.println();
@@ -392,7 +423,12 @@ public class Stats {
             System.err.println("An Error has occured in Stats#OverallAvgs");
         }
     }
-
+    /**
+     * Prints the overall high and low values for all parameters 
+     * @param db Just hand in whatever DB_Controller() object the calling class
+     * @throws ClassNotFoundException
+     * @throws SQLException 
+     */
     public void OverallHiLow(DB_Controller db) throws ClassNotFoundException, SQLException {
         try {
             System.out.println();
@@ -421,7 +457,11 @@ public class Stats {
         }
 
     }
-
+    /**
+     * a helper method to find the minimum value in an array of floats
+     * @param values the aforementioned array of floats
+     * @return the min value OR Float.MAX_Value if the set is empty
+     */
     private float minimum(float[] values) {
         float min = Float.MAX_VALUE;
         for (int i = 0; i < values.length; i++) {
@@ -432,7 +472,11 @@ public class Stats {
         }
         return min;
     }
-
+    /**
+     * a helper method to find the maximum value in an array of floats
+     * @param values the aforementioned array of floats
+     * @return the max value OR Float.MIN_Value if the set is empty
+     */
     private float maximum(float[] values) {
         float max = Float.MIN_VALUE;
         for (int i = 0; i < values.length; i++) {

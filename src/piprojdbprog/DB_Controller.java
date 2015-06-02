@@ -64,7 +64,7 @@ public class DB_Controller {
             }
 
         } catch (Exception ex) {
-            System.err.println("AN ERROR HAS OCCURED");
+            System.err.println("An error ha occured in DB_Controller#CreateDB");
         }
     }
 
@@ -89,7 +89,7 @@ public class DB_Controller {
             }
             return cnt;
         } catch (Exception e) {
-            System.out.println();
+            System.err.println("An error has occured in DB_Controller#getDBSize");
             return -1;
 
         }
@@ -119,7 +119,7 @@ public class DB_Controller {
             //System.out.println("DATA inserted");
 
         } catch (Exception ex) {
-            System.err.println("AN ERROR HAS OCCURED 5");
+            System.err.println("An eror has occured in DB_controller#AvgDBIns");
         }
 
     }
@@ -167,7 +167,7 @@ public class DB_Controller {
             //System.out.println("DATA inserted");
 
         } catch (Exception ex) {
-            System.err.println("AN ERROR HAS OCCURED 5");
+            System.err.println("An error has occured in DB_Controller#DBIns");
         }
 
     }
@@ -200,7 +200,7 @@ public class DB_Controller {
             return ret;
             // System.out.println(ra.getFloat(1));
         } catch (Exception e) {
-            System.err.println("I AM ERROR");
+            System.err.println("An error has occured in DB_Controller#GetDailyData");
             return null;
         }
 
@@ -228,10 +228,11 @@ public class DB_Controller {
             for (int i = 0; i < str.size(); i++) {
                 arr[i] = str.get(i);
             }
+            System.out.println("Info: "+arr.length+" distinct days found in database");
 
             return arr;
         } catch (Exception e) {
-            System.err.println("ERROR HAS OCCURED IN DB_Controller#DistDays");
+            System.err.println("An error has occured in DB_Controller#DistDays");
             return null;
         }
     }
@@ -333,11 +334,11 @@ public class DB_Controller {
                 }
                 // System.out.println(sna);
             } else {
-                System.err.println("Invalid value provided");
+                System.err.println("Invalid value provided to DB_Controller#dbSearch");
 
             }
         } catch (Exception e) {
-            System.out.println("ERROR!");
+            System.out.println("An error has occured in DB_Controller#dbSearch");
         }
         return null;
 

@@ -32,14 +32,14 @@ public class PiProjDbProg {
             db.DBIns(dataline, file.time[i], file.date[i]);
             insCnt = i + 1;
         }
-        System.out.println("Status: weatherData created, it contains " + insCnt + " lines");
+        System.out.println("Status: WeatherData now contains " + insCnt + " entries");
         stat.DailyAvgFiller(db);
+        stat.DailyHiLoFiller(db);
         stat.OverallAvgs(db);
         stat.OverallHighLowTemp(db);
         stat.OverallHiLow(db);
-        stat.DailyHiLoFiller(db);
-        // TODO code application logic here
 
+        // TODO code application logic here
     }
 
 }
