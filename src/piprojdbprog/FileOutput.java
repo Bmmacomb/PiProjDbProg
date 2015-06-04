@@ -34,7 +34,7 @@ public class FileOutput {
      * @throws ClassNotFoundException
      * @throws SQLException
      */
-    public boolean textChk(DB_Controller db) throws ClassNotFoundException, SQLException {
+    public boolean textChkMain(DB_Controller db) throws ClassNotFoundException, SQLException {
         try {
             String[] data = db.DB_Dump();
             if (data.length > 0) {
@@ -54,20 +54,39 @@ public class FileOutput {
 
     }
 
-    public void XMLConverter(DB_Controller db) throws ClassNotFoundException, SQLException {
-        if (textChk(db)) {
-            System.out.println("Status: Begining XML Parse");
-            for (int i = 0 ; i < dataArr.length; i++){
-            
-            
-            }
-            
+    public void XMLConverterMainDB(DB_Controller db) throws ClassNotFoundException, SQLException, FileNotFoundException, UnsupportedEncodingException {
+        try {
+            if (textChkMain(db)) {
+                PrintWriter writer = new PrintWriter("Main_OUT.xml");
+                //writer.write("TEST TEST");
+                
+                System.out.println("Status: Begining XML Parse");
+                writer.println("<XML>");
+                
+                
+                for (int i = 0; i < dataArr.length; i++) {
+                    //writer.println(dataArr[i]);
+                    //writer.println("<arr f=\"1\" g=\"9\"/>");
+            //Step 1: break string into pieces
+                    String[] tem = dataArr[i].split(" ");
+                    writer.println("<Reading Date=\""+tem[0]+"\" Time=\""+tem[1]+"\" Temperature=\""+tem[2]+"\" Humidity=\""+tem[3]+"\" Pressure=\""+tem[4]+"\" DewPoint=\""+tem[5]+"\" />");
+                    
+            //Step 2: put each piece into an xml line         
+//LIKE THIS:   <reading date="~~~" time="~~~" temp="~~~" pressure="~~~" humid="~~~" dew="~~~"/> 
+                    //Step 3: write it to a file
+                }
+                writer.println("</XML>");
+                writer.close();
+                System.out.println("Status: Main_OUT.xml Sucessfully Created");
+            } else {
+                System.err.println("An error has occured in Fileoutput#XMLConverter");
 
-        }else{
-        System.err.println("An error has occured in Fileoutput#XMLConverter");
-        
+            }
+
+        } catch (Exception e) {
+            System.err.println("ErROR");
+
         }
 
     }
-
 }

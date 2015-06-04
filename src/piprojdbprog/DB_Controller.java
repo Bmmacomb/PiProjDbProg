@@ -67,8 +67,62 @@ public class DB_Controller {
             System.err.println("An error ha occured in DB_Controller#CreateDB");
         }
     }
-    public String[] DB_Dump() throws ClassNotFoundException, SQLException{
-         try {
+    /**
+     * UNFINISHED!!!!!!!!!!!!!!
+     * @return
+     * @throws ClassNotFoundException
+     * @throws SQLException 
+     */
+    public String[] DailyAvgDump() throws ClassNotFoundException, SQLException {
+        try {
+            int size = getDBSize();
+            //System.out.println(size);
+            String[] out = new String[size];
+            Class.forName(jdbcDriver);
+            String qur = "SELECT * from dailyavgs";
+
+            Connection con = DriverManager.getConnection(connectionName, connectionUser, connectionPassword);
+            Statement st = con.createStatement();
+            ResultSet ra = st.executeQuery(qur);
+            ra.next();
+            
+            // MORE CODE NEEDED HERE
+            return null;
+        } catch (Exception e) {
+            return null;
+        }
+
+    }
+    
+    /**
+     * UNFINISHED!!!!!
+     * @return
+     * @throws ClassNotFoundException
+     * @throws SQLException 
+     */
+     public String[] DailyHiLowDump() throws ClassNotFoundException, SQLException {
+        try {
+            int size = getDBSize();
+            //System.out.println(size);
+            String[] out = new String[size];
+            Class.forName(jdbcDriver);
+            String qur = "SELECT * from dailyhilow";
+
+            Connection con = DriverManager.getConnection(connectionName, connectionUser, connectionPassword);
+            Statement st = con.createStatement();
+            ResultSet ra = st.executeQuery(qur);
+            ra.next();
+            
+            // MORE CODE NEEDED HERE
+            return null;
+        } catch (Exception e) {
+            return null;
+        }
+
+    }
+
+    public String[] DB_Dump() throws ClassNotFoundException, SQLException {
+        try {
             int size = getDBSize();
             //System.out.println(size);
             String[] out = new String[size];
@@ -79,24 +133,20 @@ public class DB_Controller {
             Statement st = con.createStatement();
             ResultSet ra = st.executeQuery(qur);
             ra.next();
-            for (int i = 0 ; i < size; i++){
+            for (int i = 0; i < size; i++) {
                 out[i] = "" + ra.getObject(1) + " " + ra.getObject(2) + "" + ra.getObject(3) + " " + ra.getObject(4) + " " + ra.getObject(5) + " " + ra.getObject(6);
                 //System.out.println(out[i]);
                 ra.next();
-            
+
             }
             return out;
-            
-            
-            
-            
-         }catch(Exception e){
-         
-         System.err.println("ERROR");
-         }
-    
-    
-    return null;
+
+        } catch (Exception e) {
+
+            System.err.println("ERROR");
+        }
+
+        return null;
     }
 
     /**
@@ -126,16 +176,19 @@ public class DB_Controller {
         }
 
     }
+
     /**
      * This method inserts data into the 'dailyAvgs' table in the database.
-     * NOTE: DO NOT HARDCODE ANY OF THEESE VALUES ALWAYS GET THEM FROM AVERAGING METHODS IN Stats
+     * NOTE: DO NOT HARDCODE ANY OF THEESE VALUES ALWAYS GET THEM FROM AVERAGING
+     * METHODS IN Stats
+     *
      * @param date the date string: (YYYY-MM-DD)
      * @param hum the average humidity value (%)
      * @param tem the average temperature value (deg F)
      * @param press the average barometric pressure value (Pa)
      * @param dew the average dew point value
      * @throws ClassNotFoundException
-     * @throws SQLException 
+     * @throws SQLException
      */
     public void AvgDBIns(String date, float hum, float tem, float press, float dew) throws ClassNotFoundException, SQLException {
         try {
@@ -154,16 +207,19 @@ public class DB_Controller {
         }
 
     }
+
     /**
-     * inserts data into the 'dailyHiLow' table in the database.
-     * all array params are of this form X[0] = [daily] minimum value X[1] = [daily] Maximum value
+     * inserts data into the 'dailyHiLow' table in the database. all array
+     * params are of this form X[0] = [daily] minimum value X[1] = [daily]
+     * Maximum value
+     *
      * @param date The date on which the data was filed under
      * @param Hum min/max humidity values (%)
      * @param Temp min/max temperature values (F)
      * @param press min/max Pressure values (Pa)
      * @param dew min/max Dew Point values (F)
      * @throws ClassNotFoundException
-     * @throws SQLException 
+     * @throws SQLException
      */
     public void HiLoIns(String date, float[] Hum, float[] Temp, float[] press, float[] dew) throws ClassNotFoundException, SQLException {
         try {
@@ -202,13 +258,14 @@ public class DB_Controller {
         }
 
     }
+
     /**
-     * 
+     *
      * @param val the type of data to return (Temp, Humid, dew_point, or press)
      * @param date the date to retrieve data from
      * @return All data of the specified type for the given day
      * @throws ClassNotFoundException
-     * @throws SQLException 
+     * @throws SQLException
      */
     public float[] GetDailyData(String val, String date) throws ClassNotFoundException, SQLException {
         try {
@@ -236,12 +293,15 @@ public class DB_Controller {
         }
 
     }
-/**
- * Used to return a list of distinct days from the 'weatherdata' database
- * @return a list of distinct days; to be used in daily averages and daily hi/lo methods
- * @throws ClassNotFoundException
- * @throws SQLException 
- */
+
+    /**
+     * Used to return a list of distinct days from the 'weatherdata' database
+     *
+     * @return a list of distinct days; to be used in daily averages and daily
+     * hi/lo methods
+     * @throws ClassNotFoundException
+     * @throws SQLException
+     */
     public String[] DistDays() throws ClassNotFoundException, SQLException {
         try {
             Class.forName(jdbcDriver);
@@ -259,7 +319,7 @@ public class DB_Controller {
             for (int i = 0; i < str.size(); i++) {
                 arr[i] = str.get(i);
             }
-            System.out.println("Info: "+arr.length+" distinct days found in database");
+            System.out.println("Info: " + arr.length + " distinct days found in database");
 
             return arr;
         } catch (Exception e) {
@@ -269,7 +329,8 @@ public class DB_Controller {
     }
 
     /**
-     * searches for all data of a given type (Temp,Press,Dew_point,Humid,Time,Date)
+     * searches for all data of a given type
+     * (Temp,Press,Dew_point,Humid,Time,Date)
      *
      * @param querry the field in the DB to return a list of
      * @return an array of floats of the specified field

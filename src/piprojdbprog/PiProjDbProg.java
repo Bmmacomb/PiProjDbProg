@@ -5,6 +5,8 @@
  */
 package piprojdbprog;
 
+import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
 import java.sql.*;
 import java.util.*;
 
@@ -19,7 +21,7 @@ public class PiProjDbProg {
      * @throws java.lang.ClassNotFoundException
      * @throws java.sql.SQLException
      */
-    public static void main(String[] args) throws ClassNotFoundException, SQLException {
+    public static void main(String[] args) throws ClassNotFoundException, SQLException, FileNotFoundException, UnsupportedEncodingException {
      // Initalize all classes   
         DB_Controller db = new DB_Controller();
         FileParser file = new FileParser();
@@ -43,7 +45,7 @@ public class PiProjDbProg {
         stat.OverallHighLowTemp(db);
         stat.OverallHiLow(db);
         // create xml out-files UNFINISHED
-        OFile.XMLConverter(db);
+        OFile.XMLConverterMainDB(db);
 
         // TODO code application logic here
     }

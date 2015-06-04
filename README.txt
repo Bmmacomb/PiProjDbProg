@@ -1,4 +1,4 @@
-Version 0.0.18
+Version 0.0.20
 
 
 The data file used with this project must be in the form below:
@@ -13,6 +13,8 @@ The data file used with this project must be in the form below:
 |        YEAR      TIME    HUM  TEMP   PRESS    ALT   SEAPRESS   DewPt  |
 |       2015-05-23 11:35:36 40.39 73.74 95293.00 515.27 95286.00 54.7   |
 |_______________________________________________________________________|
+
+Output:   This program outputs xml files for use in spreadsheets
 
 WHAT THE CLASES DO=========================================
 
