@@ -45,8 +45,7 @@ public class PiProjDbProg {
         stat.OverallHighLowTemp(db);
         stat.OverallHiLow(db);
         // create xml out-files UNFINISHED
-        OFile.XMLConverterMainDB(db);
-
+        OFile.DumpAllToXML(db);
         // TODO code application logic here
     }
 

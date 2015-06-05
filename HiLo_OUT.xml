@@ -1,0 +1,13 @@
+<XML>
+<Reading Date="1999-09-09" Low_Temperature="70.99" High_Temperature="70.99" Low_Humidity="49.99" High_Humidity="49.99" Low_Pressure="98999.7" High_Pressure="98999.7" Low_DewPoint="55.2" High_DewPoint="55.2" />
+<Reading Date="2015-04-04" Low_Temperature="50.36" High_Temperature="75.36" Low_Humidity="50.33" High_Humidity="55.33" Low_Pressure="99586.4" High_Pressure="99867.4" Low_DewPoint="30.3" High_DewPoint="45.3" />
+<Reading Date="2015-05-23" Low_Temperature="60.35" High_Temperature="96.75" Low_Humidity="33.41" High_Humidity="40.41" Low_Pressure="95238.0" High_Pressure="97615.0" Low_DewPoint="50.6" High_DewPoint="58.92" />
+<Reading Date="2015-05-24" Low_Temperature="66.86" High_Temperature="74.86" Low_Humidity="27.41" High_Humidity="56.41" Low_Pressure="93896.0" High_Pressure="95233.0" Low_DewPoint="40.6" High_DewPoint="55.9" />
+<Reading Date="2015-05-25" Low_Temperature="70.36" High_Temperature="74.75" Low_Humidity="39.41" High_Humidity="39.41" Low_Pressure="95232.0" High_Pressure="95232.0" Low_DewPoint="50.9" High_DewPoint="55.9" />
+<Reading Date="2015-05-26" Low_Temperature="96.86" High_Temperature="96.86" Low_Humidity="39.41" High_Humidity="39.41" Low_Pressure="95230.0" High_Pressure="95230.0" Low_DewPoint="55.9" High_DewPoint="55.9" />
+<Reading Date="2015-06-25" Low_Temperature="78.88" High_Temperature="78.88" Low_Humidity="48.69" High_Humidity="48.69" Low_Pressure="92345.6" High_Pressure="92345.6" Low_DewPoint="56.79" High_DewPoint="56.79" />
+<Reading Date="2016-05-25" Low_Temperature="75.66" High_Temperature="75.66" Low_Humidity="46.39" High_Humidity="46.39" Low_Pressure="59999.8" High_Pressure="91235.8" Low_DewPoint="50.3" High_DewPoint="50.3" />
+<Reading Date="2017-05-25" Low_Temperature="1.0" High_Temperature="80.0" Low_Humidity="20.0" High_Humidity="78.78" Low_Pressure="60000.8" High_Pressure="80045.8" Low_DewPoint="39.5" High_DewPoint="70.0" />
+<Reading Date="2017-11-12" Low_Temperature="27.52" High_Temperature="101.0" Low_Humidity="52.78" High_Humidity="63.89" Low_Pressure="65600.8" High_Pressure="80045.8" Low_DewPoint="57.0" High_DewPoint="70.0" />
+<Reading Date="2017-12-12" Low_Temperature="3.8" High_Temperature="3.8" Low_Humidity="20.11" High_Humidity="20.11" Low_Pressure="65790.0" High_Pressure="65790.0" Low_DewPoint="15.9" High_DewPoint="15.9" />
+</XML>

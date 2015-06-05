@@ -67,15 +67,17 @@ public class DB_Controller {
             System.err.println("An error ha occured in DB_Controller#CreateDB");
         }
     }
+
     /**
-     * UNFINISHED!!!!!!!!!!!!!!
+     * 
+     *
      * @return
      * @throws ClassNotFoundException
-     * @throws SQLException 
+     * @throws SQLException
      */
     public String[] DailyAvgDump() throws ClassNotFoundException, SQLException {
         try {
-            int size = getDBSize();
+            int size = getAvgSize();
             //System.out.println(size);
             String[] out = new String[size];
             Class.forName(jdbcDriver);
@@ -85,24 +87,32 @@ public class DB_Controller {
             Statement st = con.createStatement();
             ResultSet ra = st.executeQuery(qur);
             ra.next();
-            
+            for (int i = 0; i < size; i++) {
+                out[i] = "" + ra.getObject(1) + " " + ra.getObject(2) + " " + ra.getObject(3) + " " + ra.getObject(4) + " " + ra.getObject(5);
+              //  System.out.println(out[i]);
+                ra.next();
+
+            }
+            return out;
+
             // MORE CODE NEEDED HERE
-            return null;
+           
         } catch (Exception e) {
             return null;
         }
 
     }
-    
+
     /**
      * UNFINISHED!!!!!
+     *
      * @return
      * @throws ClassNotFoundException
-     * @throws SQLException 
+     * @throws SQLException
      */
-     public String[] DailyHiLowDump() throws ClassNotFoundException, SQLException {
-        try {
-            int size = getDBSize();
+    public String[] DailyHiLowDump() throws ClassNotFoundException, SQLException {
+         try {
+            int size = getHiLoSize();
             //System.out.println(size);
             String[] out = new String[size];
             Class.forName(jdbcDriver);
@@ -112,9 +122,16 @@ public class DB_Controller {
             Statement st = con.createStatement();
             ResultSet ra = st.executeQuery(qur);
             ra.next();
-            
+            for (int i = 0; i < size; i++) {
+                out[i] = "" + ra.getObject(1) + " " + ra.getObject(2) + " " + ra.getObject(3) + " " + ra.getObject(4) + " " + ra.getObject(5) + " " + ra.getObject(6) + " " + ra.getObject(7) + " " + ra.getObject(8) + " " + ra.getObject(9);
+              //  System.out.println(out[i]);
+                ra.next();
+
+            }
+            return out;
+
             // MORE CODE NEEDED HERE
-            return null;
+           
         } catch (Exception e) {
             return null;
         }
@@ -155,7 +172,7 @@ public class DB_Controller {
      * @throws ClassNotFoundException
      * @throws SQLException
      */
-    public int getDBSize() throws ClassNotFoundException, SQLException {
+    private int getDBSize() throws ClassNotFoundException, SQLException {
         try {
             Class.forName(jdbcDriver);
             String qur = "SELECT * from weatherdata";
@@ -173,6 +190,50 @@ public class DB_Controller {
             System.err.println("An error has occured in DB_Controller#getDBSize");
             return -1;
 
+        }
+
+    }
+
+    private int getAvgSize() throws ClassNotFoundException, SQLException {
+        try {
+            Class.forName(jdbcDriver);
+            String qur = "SELECT * from dailyavgs";
+
+            Connection con = DriverManager.getConnection(connectionName, connectionUser, connectionPassword);
+            Statement st = con.createStatement();
+            ResultSet ra = st.executeQuery(qur);
+            int cnt = 0;
+            while (ra.next()) {
+                cnt++;
+
+            }
+            //System.out.println(cnt);
+            return cnt;
+        } catch (Exception e) {
+            System.err.println("errorX");
+            return 0;
+        }
+
+    }
+    
+     private int getHiLoSize() throws ClassNotFoundException, SQLException {
+        try {
+            Class.forName(jdbcDriver);
+            String qur = "SELECT * from dailyhilow";
+
+            Connection con = DriverManager.getConnection(connectionName, connectionUser, connectionPassword);
+            Statement st = con.createStatement();
+            ResultSet ra = st.executeQuery(qur);
+            int cnt = 0;
+            while (ra.next()) {
+                cnt++;
+
+            }
+            //System.out.println(cnt);
+            return cnt;
+        } catch (Exception e) {
+            System.err.println("errorX");
+            return 0;
         }
 
     }

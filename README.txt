@@ -1,5 +1,6 @@
-Version 0.0.20
+Version 0.1.0 
 
+Now fairly stable!
 
 The data file used with this project must be in the form below:
 (DATE: YYYY-MM-DD)*SPACE*(TIME: HH:MM:SS)*SPACE*(HUMIDITY: IN PERCENT)*SPACE*(TEMP: IN F)*SPACE*(PRESSURE: IN Pa)*SPACE*(ALTITUDE)*SPACE*(SEALEVEL PRESSURE: IN Pa)*SPACE*(DEW POINT IN F)
@@ -38,7 +39,7 @@ firstly; that's short for "Pi Project Database Program"
 this is the main class that runs the project
 
 FileOutput----------------------(>1% DONE)
-This will create an output file of the databases in XML or plain text;
+This will create an output file of the databases in XML
 
 
 NOTES ON THE DATABASE===================================
