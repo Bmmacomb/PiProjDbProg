@@ -9,21 +9,30 @@ import java.util.*;
 import java.io.*;
 
 /**
- *
- * @author Brendan essentially finished as of 5/26/15 this class parses the
- * datafile produced by the raspberry pi weather-station into a form that is
- * easier to insert into the sql database
+ * this class is used to parse the data from the datafile into a format conducive to being inserted into the databases
+ * @author Brendan
  */
 public class FileParser {
-
+    /**
+     * the array that holds the data from the file
+     */
     public static String[] dataArr;
+    /**
+     * A temporary list to hold the data until all entries are processed, (arrays are not easy to extend, so we need this)
+     */
     public static LinkedList data = new LinkedList<String>();
 
     /**
-     *
+     *this is only used in this#averages to hold all the average values (Temp,Hum,DewPT,Press) for return as an array
      */
     public static float[][] dataLine;
+    /**
+     * the array of time entries from the file
+     */
     public static String[] time;
+    /**
+     * the array of date entries from the file
+     */
     public static String[] date;
 
     /**

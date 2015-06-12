@@ -219,6 +219,13 @@ public class Stats {
     //========dew pt================
     //-----------------------Overall high/low-----------------------------------
     //===========Pressure===========
+    /**
+     * Returns the OVERALL High/Low values for pressure
+     * @param db the DB_Controller the caller is using
+     * @return [0] = low value, [1] high value
+     * @throws ClassNotFoundException
+     * @throws SQLException 
+     */
     public float[] OverallHighLowPressure(DB_Controller db) throws ClassNotFoundException, SQLException {
 
         float[] result = new float[2];// 0 will be low/ 1 is high
@@ -237,6 +244,13 @@ public class Stats {
     }
 
     //======Temp====================
+        /**
+     * Returns the OVERALL High/Low values for temperature
+     * @param db the DB_Controller the caller is using
+     * @return [0] = low value, [1] high value
+     * @throws ClassNotFoundException
+     * @throws SQLException 
+     */
     public float[] OverallHighLowTemp(DB_Controller db) throws ClassNotFoundException, SQLException {
 
         float[] result = new float[2];// 0 will be low/ 1 is high
@@ -254,6 +268,13 @@ public class Stats {
     }
 
     //=========humid================
+        /**
+     * Returns the OVERALL High/Low values for Humidity
+     * @param db the DB_Controller the caller is using
+     * @return [0] = low value, [1] high value
+     * @throws ClassNotFoundException
+     * @throws SQLException 
+     */
     public float[] OverallHighLowHumid(DB_Controller db) throws ClassNotFoundException, SQLException {
 
         float[] result = new float[2];// 0 will be low/ 1 is high
@@ -271,6 +292,13 @@ public class Stats {
     }
 
     //=========Dew pt===============
+        /**
+     * Returns the OVERALL High/Low values for Dew Point
+     * @param db the DB_Controller the caller is using
+     * @return [0] = low value, [1] high value
+     * @throws ClassNotFoundException
+     * @throws SQLException 
+     */
     public float[] OverallHighLowDew(DB_Controller db) throws ClassNotFoundException, SQLException {
 
         float[] result = new float[2];// 0 will be low/ 1 is high
@@ -289,6 +317,11 @@ public class Stats {
 
     //-----------------------daily high/low-------------------------------------
     //===========Pressure===========
+    /**
+     * Returns the daily high and low values for Pressure
+     * @param readings an array of pressure readings
+     * @return [0] = low, [1] = high
+     */
     public float[] DailyHiLoPressure(float[] readings) {
 
         float min = minimum(readings);
@@ -302,6 +335,11 @@ public class Stats {
     }
 
     //======Temp===================
+        /**
+     * Returns the daily high and low values for Temperature
+     * @param readings an array of temp readings
+     * @return [0] = low, [1] = high
+     */
     public float[] DailyHiLoTemp(float[] readings) {
 
         float min = minimum(readings);
@@ -315,6 +353,11 @@ public class Stats {
     }
 
     //=========humid================
+        /**
+     * Returns the daily high and low values for humidity
+     * @param readings an array of humidity readings
+     * @return [0] = low, [1] = high
+     */
     public float[] DailyHiLoHum(float[] readings) {
 
         float min = minimum(readings);
@@ -328,6 +371,11 @@ public class Stats {
     }
 
     //=========Dew pt===============
+        /**
+     * Returns the daily high and low values for Dew Point
+     * @param readings an array of dew point readings
+     * @return [0] = low, [1] = high
+     */
     public float[] DailyHiLoDew(float[] readings) {
 
         float min = minimum(readings);
@@ -347,6 +395,12 @@ public class Stats {
     //=========humid================
     //=========Dew pt===============
     //-----------------------helper method(s)-----------------------------------
+    /**
+     * Neatly gathers all needed data for filling the dailyHiLow database, then makes the needed calls to do so
+     * @param db the DB_Controller used by the caller
+     * @throws SQLException
+     * @throws ClassNotFoundException 
+     */
     public void DailyHiLoFiller(DB_Controller db) throws SQLException, ClassNotFoundException {
         int ctr = 0;
         try {

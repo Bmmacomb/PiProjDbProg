@@ -7,7 +7,7 @@
 <Daily_Average Date="2015-05-26" Average_Temperature="96.86" Average_Humidity="39.41" Average_Pressure="95230.0" Average_DewPoint="55.9" />
 <Daily_Average Date="2015-06-25" Average_Temperature="78.88" Average_Humidity="48.69" Average_Pressure="92345.6" Average_DewPoint="56.79" />
 <Daily_Average Date="2016-05-25" Average_Temperature="75.66" Average_Humidity="46.39" Average_Pressure="75617.8" Average_DewPoint="50.3" />
-<Daily_Average Date="2017-05-25" Average_Temperature="43.4286" Average_Humidity="45.8029" Average_Pressure="69378.7" Average_DewPoint="49.9286" />
-<Daily_Average Date="2017-11-12" Average_Temperature="67.94" Average_Humidity="57.22" Average_Pressure="72823.3" Average_DewPoint="61.75" />
-<Daily_Average Date="2017-12-12" Average_Temperature="3.8" Average_Humidity="20.11" Average_Pressure="65790.0" Average_DewPoint="15.9" />
+<Daily_Average Date="2017-05-25" Average_Temperature="43.4286" Average_Humidity="45.8029" Average_Pressure="69378.7" Average_DewPoint="50.0714" />
+<Daily_Average Date="2017-11-12" Average_Temperature="67.94" Average_Humidity="57.22" Average_Pressure="72823.3" Average_DewPoint="209.25" />
+<Daily_Average Date="2017-12-12" Average_Temperature="3.8" Average_Humidity="20.11" Average_Pressure="65790.0" Average_DewPoint="40.9" />
 </XML>

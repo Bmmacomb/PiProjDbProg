@@ -26,7 +26,7 @@ public class DB_Controller {
     private static final String connectionName
             = "jdbc:mysql://localhost/weather";
     /**
-     * The [MY]SQL user to log in as
+     * The MYSQL user to log in as
      */
     private static final String connectionUser = "root";
     /**
@@ -137,7 +137,12 @@ public class DB_Controller {
         }
 
     }
-
+/**
+ * Dumps weatherdata into an array of strings
+ * @return an array of strings containing the lines from 'weatherdata'
+ * @throws ClassNotFoundException
+ * @throws SQLException 
+ */
     public String[] DB_Dump() throws ClassNotFoundException, SQLException {
         try {
             int size = getDBSize();
@@ -193,7 +198,12 @@ public class DB_Controller {
         }
 
     }
-
+/**
+ * Gets the size of the dailyavgs database
+ * @return the size of dailyavgs
+ * @throws ClassNotFoundException
+ * @throws SQLException 
+ */
     private int getAvgSize() throws ClassNotFoundException, SQLException {
         try {
             Class.forName(jdbcDriver);
@@ -215,7 +225,12 @@ public class DB_Controller {
         }
 
     }
-    
+    /**
+     * Gets the size of the dailyhilow database
+     * @return the size of dailyhilow
+     * @throws ClassNotFoundException
+     * @throws SQLException 
+     */
      private int getHiLoSize() throws ClassNotFoundException, SQLException {
         try {
             Class.forName(jdbcDriver);

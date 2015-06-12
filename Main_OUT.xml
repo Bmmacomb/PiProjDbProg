@@ -23,10 +23,10 @@
 <Reading Date="2017-05-25" Time="19:19:15" Temperature="40.0" Humidity="20.42" Pressure="60000.8" DewPoint="50.0" />
 <Reading Date="2017-05-25" Time="19:19:15" Temperature="36.0" Humidity="65.0" Pressure="60000.8" DewPoint="39.5" />
 <Reading Date="2017-05-25" Time="19:19:19" Temperature="27.0" Humidity="56.0" Pressure="80045.8" DewPoint="60.0" />
-<Reading Date="2017-05-25" Time="19:19:15" Temperature="1.0" Humidity="78.78" Pressure="65600.8" DewPoint="70.0" />
-<Reading Date="2017-11-12" Time="19:19:19" Temperature="27.52" Humidity="56.21" Pressure="80045.8" DewPoint="60.0" />
+<Reading Date="2017-05-25" Time="19:19:15" Temperature="1.0" Humidity="78.78" Pressure="65600.8" DewPoint="71.0" />
+<Reading Date="2017-11-12" Time="19:19:19" Temperature="27.52" Humidity="56.21" Pressure="80045.8" DewPoint="650.0" />
 <Reading Date="2017-11-12" Time="19:19:15" Temperature="101.0" Humidity="63.89" Pressure="65600.8" DewPoint="70.0" />
 <Reading Date="2017-11-12" Time="19:19:19" Temperature="82.24" Humidity="56.0" Pressure="80045.8" DewPoint="60.0" />
 <Reading Date="2017-11-12" Time="19:19:15" Temperature="61.0" Humidity="52.78" Pressure="65600.8" DewPoint="57.0" />
-<Reading Date="2017-12-12" Time="10:32:01" Temperature="3.8" Humidity="20.11" Pressure="65790.0" DewPoint="15.9" />
+<Reading Date="2017-12-12" Time="10:32:01" Temperature="3.8" Humidity="20.11" Pressure="65790.0" DewPoint="40.9" />
 </XML>

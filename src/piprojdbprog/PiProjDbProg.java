@@ -26,7 +26,7 @@ public class PiProjDbProg {
         DB_Controller db = new DB_Controller();
         FileParser file = new FileParser();
         Stats stat = new Stats();
-        FileOutput OFile = new FileOutput(db, "outFile");
+        FileOutput OFile = new FileOutput();
      // Database creation   
         float[] dataline = new float[3];
         file.popData();
@@ -42,7 +42,6 @@ public class PiProjDbProg {
         stat.DailyAvgFiller(db);
         stat.DailyHiLoFiller(db);
         stat.OverallAvgs(db);
-        stat.OverallHighLowTemp(db);
         stat.OverallHiLow(db);
         // create xml out-files UNFINISHED
         OFile.DumpAllToXML(db);
