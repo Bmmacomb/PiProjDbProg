@@ -347,6 +347,7 @@ public class DB_Controller {
         try {
             Class.forName(jdbcDriver);
             //System.out.println(val);
+       //     System.out.println(date);
             String qur = "SELECT " + val + " from weatherdata where date = " + "'" + date + "'";
             //System.out.println(qur);
             Connection con = DriverManager.getConnection(connectionName, connectionUser, connectionPassword);
