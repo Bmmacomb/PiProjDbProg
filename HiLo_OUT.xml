@@ -10,4 +10,15 @@
 <Reading Date="2017-05-25" Low_Temperature="1.0" High_Temperature="80.0" Low_Humidity="20.0" High_Humidity="78.78" Low_Pressure="60000.8" High_Pressure="80045.8" Low_DewPoint="39.5" High_DewPoint="71.0" />
 <Reading Date="2017-11-12" Low_Temperature="27.52" High_Temperature="101.0" Low_Humidity="52.78" High_Humidity="63.89" Low_Pressure="65600.8" High_Pressure="80045.8" Low_DewPoint="57.0" High_DewPoint="650.0" />
 <Reading Date="2017-12-12" Low_Temperature="3.8" High_Temperature="3.8" Low_Humidity="20.11" High_Humidity="20.11" Low_Pressure="65790.0" High_Pressure="65790.0" Low_DewPoint="40.9" High_DewPoint="40.9" />
+<Reading Date="2015-05-27" Low_Temperature="76.21" High_Temperature="76.33" Low_Humidity="40.88" High_Humidity="40.88" Low_Pressure="94740.0" High_Pressure="94756.0" Low_DewPoint="44.74" High_DewPoint="55.04" />
+<Reading Date="2015-06-02" Low_Temperature="75.2" High_Temperature="75.2" Low_Humidity="41.85" High_Humidity="41.85" Low_Pressure="94117.0" High_Pressure="94117.0" Low_DewPoint="54.27" High_DewPoint="54.27" />
+<Reading Date="2015-07-07" Low_Temperature="73.62" High_Temperature="78.12" Low_Humidity="34.53" High_Humidity="41.36" Low_Pressure="94309.0" High_Pressure="94565.0" Low_DewPoint="50.41" High_DewPoint="56.66" />
+<Reading Date="2015-07-09" Low_Temperature="75.2" High_Temperature="78.12" Low_Humidity="34.53" High_Humidity="39.9" Low_Pressure="94298.0" High_Pressure="94631.0" Low_DewPoint="52.03" High_DewPoint="55.7" />
+<Reading Date="2015-07-10" Low_Temperature="74.53" High_Temperature="79.14" Low_Humidity="32.09" High_Humidity="41.85" Low_Pressure="94337.0" High_Pressure="94652.0" Low_DewPoint="50.6" High_DewPoint="56.85" />
+<Reading Date="2015-07-11" Low_Temperature="75.54" High_Temperature="78.69" Low_Humidity="33.55" High_Humidity="44.78" Low_Pressure="94304.0" High_Pressure="94549.0" Low_DewPoint="52.02" High_DewPoint="58.25" />
+<Reading Date="2015-07-12" Low_Temperature="76.33" High_Temperature="79.03" Low_Humidity="34.04" High_Humidity="39.9" Low_Pressure="94193.0" High_Pressure="94459.0" Low_DewPoint="53.11" High_DewPoint="56.59" />
+<Reading Date="2015-07-13" Low_Temperature="73.85" High_Temperature="78.8" Low_Humidity="35.02" High_Humidity="45.76" Low_Pressure="93537.0" High_Pressure="93906.0" Low_DewPoint="50.46" High_DewPoint="59.27" />
+<Reading Date="2015-07-14" Low_Temperature="76.66" High_Temperature="77.9" Low_Humidity="37.46" High_Humidity="42.34" Low_Pressure="93218.0" High_Pressure="93847.0" Low_DewPoint="55.14" High_DewPoint="57.03" />
+<Reading Date="2015-07-15" Low_Temperature="76.44" High_Temperature="78.12" Low_Humidity="35.99" High_Humidity="43.8" Low_Pressure="93237.0" High_Pressure="93949.0" Low_DewPoint="53.39" High_DewPoint="57.56" />
+<Reading Date="2015-07-16" Low_Temperature="77.11" High_Temperature="77.79" Low_Humidity="40.39" High_Humidity="42.34" Low_Pressure="93858.0" High_Pressure="94066.0" Low_DewPoint="56.18" High_DewPoint="56.69" />
 </XML>

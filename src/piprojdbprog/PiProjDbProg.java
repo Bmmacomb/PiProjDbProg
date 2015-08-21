@@ -20,8 +20,10 @@ public class PiProjDbProg {
      * @param args the command line arguments
      * @throws java.lang.ClassNotFoundException
      * @throws java.sql.SQLException
+     * @throws java.io.FileNotFoundException
+     * @throws java.io.UnsupportedEncodingException
      */
-    public static void main(String[] args) throws ClassNotFoundException, SQLException, FileNotFoundException, UnsupportedEncodingException {
+    public static void main(String[] args) throws ClassNotFoundException, SQLException, FileNotFoundException, UnsupportedEncodingException, Exception {
      // Initalize all classes   
         DB_Controller db = new DB_Controller();
         FileParser file = new FileParser();

@@ -17,6 +17,10 @@ import java.sql.*;
 public class DB_Controller {
 
     /**
+     * This is the db connection to be used;
+     */
+    Connection con;
+    /**
      * the driver for the SQL linker in this case: MYSQL
      */
     private static final String jdbcDriver = "com.mysql.jdbc.Driver";
@@ -48,7 +52,8 @@ public class DB_Controller {
         }
         try {
             Class.forName(jdbcDriver);
-            Connection con = DriverManager.getConnection(connectionName, connectionUser, connectionPassword);
+            //create connection for use throughout the program
+             con = DriverManager.getConnection(connectionName, connectionUser, connectionPassword);
             //System.out.println("2");
             Statement st = con.createStatement();
             if (indicator == 0) {
@@ -83,7 +88,7 @@ public class DB_Controller {
             Class.forName(jdbcDriver);
             String qur = "SELECT * from dailyavgs";
 
-            Connection con = DriverManager.getConnection(connectionName, connectionUser, connectionPassword);
+           // Connection con = DriverManager.getConnection(connectionName, connectionUser, connectionPassword);
             Statement st = con.createStatement();
             ResultSet ra = st.executeQuery(qur);
             ra.next();
@@ -312,16 +317,20 @@ public class DB_Controller {
     }
 
     /**
-     * inserts one line into the database
+     * inserts one line into the database after being parsed in {@link piprojdbprog.FileParser#dataParse(int index)}
      *
      * @param data the output from
-     * {@link piprojdbprog.FileParser#dataParse(int index)}
+     * @param time
+     * @param date
+     * @throws java.lang.ClassNotFoundException
+     * @throws java.sql.SQLException
+     * 
      */
-    public void DBIns(float[] data, String time, String date) {
-        try {
+    public void DBIns(float[] data, String time, String date)throws ClassNotFoundException, SQLException {
+       
 
             Class.forName(jdbcDriver);
-            Connection con = DriverManager.getConnection(connectionName, connectionUser, connectionPassword);
+            
             //System.out.println("2");
             Statement st = con.createStatement();
             //System.out.println(time);
@@ -329,9 +338,7 @@ public class DB_Controller {
             st.execute("Insert into weatherData values( " + "'" + date + "'," + "'" + time + " ', " + data[1] + " , " + data[0] + " , " + data[2] + " , " + data[3] + " )");
             //System.out.println("DATA inserted");
 
-        } catch (Exception ex) {
-            System.err.println("An error has occured in DB_Controller#DBIns");
-        }
+   
 
     }
 
@@ -350,7 +357,7 @@ public class DB_Controller {
        //     System.out.println(date);
             String qur = "SELECT " + val + " from weatherdata where date = " + "'" + date + "'";
             //System.out.println(qur);
-            Connection con = DriverManager.getConnection(connectionName, connectionUser, connectionPassword);
+            //Connection con = DriverManager.getConnection(connectionName, connectionUser, connectionPassword);
             Statement st = con.createStatement();
             ResultSet ra = st.executeQuery(qur);
             LinkedList<Float> li = new LinkedList<>();
