@@ -69,7 +69,8 @@ public class DB_Controller {
             }
 
         } catch (Exception ex) {
-            System.err.println("An error ha occured in DB_Controller#CreateDB");
+            System.err.println("An error has occured in DB_Controller#CreateDB");
+            System.exit(0);
         }
     }
 
@@ -103,6 +104,7 @@ public class DB_Controller {
             // MORE CODE NEEDED HERE
            
         } catch (Exception e) {
+            System.exit(0);
             return null;
         }
 
@@ -123,7 +125,7 @@ public class DB_Controller {
             Class.forName(jdbcDriver);
             String qur = "SELECT * from dailyhilow";
 
-            Connection con = DriverManager.getConnection(connectionName, connectionUser, connectionPassword);
+            //Connection con = DriverManager.getConnection(connectionName, connectionUser, connectionPassword);
             Statement st = con.createStatement();
             ResultSet ra = st.executeQuery(qur);
             ra.next();
@@ -138,6 +140,7 @@ public class DB_Controller {
             // MORE CODE NEEDED HERE
            
         } catch (Exception e) {
+            System.exit(0);
             return null;
         }
 
@@ -156,7 +159,7 @@ public class DB_Controller {
             Class.forName(jdbcDriver);
             String qur = "SELECT * from weatherdata";
 
-            Connection con = DriverManager.getConnection(connectionName, connectionUser, connectionPassword);
+           // Connection con = DriverManager.getConnection(connectionName, connectionUser, connectionPassword);
             Statement st = con.createStatement();
             ResultSet ra = st.executeQuery(qur);
             ra.next();
@@ -171,6 +174,7 @@ public class DB_Controller {
         } catch (Exception e) {
 
             System.err.println("ERROR");
+            System.exit(0);
         }
 
         return null;
@@ -187,7 +191,7 @@ public class DB_Controller {
             Class.forName(jdbcDriver);
             String qur = "SELECT * from weatherdata";
 
-            Connection con = DriverManager.getConnection(connectionName, connectionUser, connectionPassword);
+           // Connection con = DriverManager.getConnection(connectionName, connectionUser, connectionPassword);
             Statement st = con.createStatement();
             ResultSet ra = st.executeQuery(qur);
             int cnt = 0;
@@ -198,6 +202,7 @@ public class DB_Controller {
             return cnt;
         } catch (Exception e) {
             System.err.println("An error has occured in DB_Controller#getDBSize");
+            System.exit(0);
             return -1;
 
         }
@@ -214,7 +219,7 @@ public class DB_Controller {
             Class.forName(jdbcDriver);
             String qur = "SELECT * from dailyavgs";
 
-            Connection con = DriverManager.getConnection(connectionName, connectionUser, connectionPassword);
+           // Connection con = DriverManager.getConnection(connectionName, connectionUser, connectionPassword);
             Statement st = con.createStatement();
             ResultSet ra = st.executeQuery(qur);
             int cnt = 0;
@@ -226,6 +231,7 @@ public class DB_Controller {
             return cnt;
         } catch (Exception e) {
             System.err.println("errorX");
+            System.exit(0);
             return 0;
         }
 
@@ -241,7 +247,7 @@ public class DB_Controller {
             Class.forName(jdbcDriver);
             String qur = "SELECT * from dailyhilow";
 
-            Connection con = DriverManager.getConnection(connectionName, connectionUser, connectionPassword);
+            //Connection con = DriverManager.getConnection(connectionName, connectionUser, connectionPassword);
             Statement st = con.createStatement();
             ResultSet ra = st.executeQuery(qur);
             int cnt = 0;
@@ -253,6 +259,7 @@ public class DB_Controller {
             return cnt;
         } catch (Exception e) {
             System.err.println("errorX");
+            System.exit(0);
             return 0;
         }
 
@@ -275,7 +282,7 @@ public class DB_Controller {
         try {
 
             Class.forName(jdbcDriver);
-            Connection con = DriverManager.getConnection(connectionName, connectionUser, connectionPassword);
+           // Connection con = DriverManager.getConnection(connectionName, connectionUser, connectionPassword);
             //System.out.println("2");
             Statement st = con.createStatement();
             //System.out.println(time);
@@ -285,6 +292,7 @@ public class DB_Controller {
 
         } catch (Exception ex) {
             System.err.println("An eror has occured in DB_controller#AvgDBIns");
+            System.exit(0);
         }
 
     }
@@ -305,7 +313,7 @@ public class DB_Controller {
     public void HiLoIns(String date, float[] Hum, float[] Temp, float[] press, float[] dew) throws ClassNotFoundException, SQLException {
         try {
             Class.forName(jdbcDriver);
-            Connection con = DriverManager.getConnection(connectionName, connectionUser, connectionPassword);
+            //Connection con = DriverManager.getConnection(connectionName, connectionUser, connectionPassword);
             //System.out.println("2");
             Statement st = con.createStatement();
             //System.out.println(Temp[0] + " " + Temp[1]);
@@ -313,6 +321,7 @@ public class DB_Controller {
 
         } catch (Exception e) {
             System.err.println("ERROR IN DB_Controller#HiLoIns");
+            System.exit(0);
         }
     }
 
@@ -373,6 +382,7 @@ public class DB_Controller {
             // System.out.println(ra.getFloat(1));
         } catch (Exception e) {
             System.err.println("An error has occured in DB_Controller#GetDailyData");
+            System.exit(0);
             return null;
         }
 
@@ -391,7 +401,7 @@ public class DB_Controller {
             Class.forName(jdbcDriver);
             String qur = "SELECT distinct date from weatherdata ";
 
-            Connection con = DriverManager.getConnection(connectionName, connectionUser, connectionPassword);
+           // Connection con = DriverManager.getConnection(connectionName, connectionUser, connectionPassword);
             Statement st = con.createStatement();
             ResultSet ra = st.executeQuery(qur);
             LinkedList<String> str = new LinkedList<>();
@@ -408,6 +418,7 @@ public class DB_Controller {
             return arr;
         } catch (Exception e) {
             System.err.println("An error has occured in DB_Controller#DistDays");
+            System.exit(0);
             return null;
         }
     }
@@ -428,7 +439,7 @@ public class DB_Controller {
                 Class.forName(jdbcDriver);
                 String qur = "SELECT count(*) from weatherdata";
 
-                Connection con = DriverManager.getConnection(connectionName, connectionUser, connectionPassword);
+                //Connection con = DriverManager.getConnection(connectionName, connectionUser, connectionPassword);
                 Statement st = con.createStatement();
                 ResultSet ra = st.executeQuery(qur);
                 ra.next();
@@ -515,6 +526,7 @@ public class DB_Controller {
             }
         } catch (Exception e) {
             System.out.println("An error has occured in DB_Controller#dbSearch");
+            System.exit(0);
         }
         return null;
 

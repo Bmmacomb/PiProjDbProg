@@ -40,8 +40,8 @@ public class FileParser {
      * MUST be used in conjunction with
      * {@link piprojdbprog.FileParser#ParseFile(String filename)}
      */
-    public void popData() {
-        ParseFile("dataFile.txt");
+    public void popData(String fname) {
+        ParseFile(fname);
 
         for (int i = 0; i < data.size(); i++) {
             dataArr[i] = data.get(i).toString();

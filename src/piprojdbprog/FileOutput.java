@@ -47,6 +47,7 @@ public class FileOutput {
 
         } catch (Exception e) {
             System.err.println("An error has occured in FileOutput#DumpAllToXML");
+            System.exit(0);
         }
 
     }

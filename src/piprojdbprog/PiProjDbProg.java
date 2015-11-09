@@ -16,6 +16,11 @@ import java.util.*;
  */
 public class PiProjDbProg {
 
+    public static DB_Controller db = new DB_Controller();
+    public static FileParser file = new FileParser();
+    public static Stats stat = new Stats();
+    public static FileOutput OFile = new FileOutput();
+
     /**
      * @param args the command line arguments
      * @throws java.lang.ClassNotFoundException
@@ -25,13 +30,10 @@ public class PiProjDbProg {
      */
     public static void main(String[] args) throws ClassNotFoundException, SQLException, FileNotFoundException, UnsupportedEncodingException, Exception {
      // Initalize all classes   
-        DB_Controller db = new DB_Controller();
-        FileParser file = new FileParser();
-        Stats stat = new Stats();
-        FileOutput OFile = new FileOutput();
-     // Database creation   
+
+        // Database creation   
         float[] dataline = new float[3];
-        file.popData();
+        file.popData(args[0]);
         db.createDB(0);
         int insCnt = 0;
         for (int i = 0; i < file.getSizeofFile(); i++) {

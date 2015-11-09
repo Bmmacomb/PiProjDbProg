@@ -1,0 +1,5 @@
+read a
+a:=36 + 6
+write a
+y ++65654367fhgdhbtaweberwb 8
+$$
